@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zakat Calculator</title>
+    <style>
+        body {
+            background-color: #ffc0cb; /* Pink background color */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Zakat Calculator</h1>
+    <label for="income">Enter Your Yearly Income:</label>
+    <input type="text" id="income" placeholder="Enter your income">
+    <button onclick="calculateZakat()">Calculate Zakat</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateZakat() {
+            let income = document.getElementById("income").value;
+            let zakatAmount = (parseFloat(income) * 0.025).toFixed(2);
+            document.getElementById("result").innerText = "Your Zakat Pendapatan Amount is: RM " + zakatAmount;
+        }
+    </script>
+</body>
+</html>

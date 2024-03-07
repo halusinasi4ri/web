@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffb6c1; /* Pink background color */
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Unit Converter</h1>
+        <label for="conversionType">Choose a conversion:</label>
+        <select id="conversionType">
+            <option value="cmToMeter">cm to metre</option>
+            <option value="meterToCm">metre to cm</option>
+            <option value="meterToKm">metre to km</option>
+            <option value="kmToMeter">km to metre</option>
+            <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+        </select>
+        <br><br>
+        <label for="input">Enter value:</label>
+        <input type="number" id="input">
+        <br><br>
+        <button onclick="convert()">Convert</button>
+        <br><br>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convert() {
+            var conversionType = document.getElementById("conversionType").value;
+            var inputValue = parseFloat(document.getElementById("input").value);
+            var result;
+
+            switch (conversionType) {
+                case "cmToMeter":
+                    result = inputValue / 100;
+                    break;
+                case "meterToCm":
+                    result = inputValue * 100;
+                    break;
+                case "meterToKm":
+                    result = inputValue / 1000;
+                    break;
+                case "kmToMeter":
+                    result = inputValue * 1000;
+                    break;
+                case "celsiusToFahrenheit":
+                    result = (inputValue * 9/5) + 32;
+                    break;
+                default:
+                    result = "Invalid conversion type";
+            }
+
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+    </script>
+</body>
+</html>

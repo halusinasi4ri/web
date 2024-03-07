@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weight Checker</title>
+    <style>
+        body {
+            background-color: #ffc0cb; /* Pink background color */
+            font-family: Arial, sans-serif;
+        }
+        .highlight-blue {
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+        }
+        .highlight-green {
+            background-color: green;
+            color: white;
+            font-weight: bold;
+        }
+        .highlight-yellow {
+            background-color: yellow;
+            font-weight: bold;
+        }
+        .highlight-orange {
+            background-color: orange;
+            font-weight: bold;
+        }
+        .highlight-red {
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #status {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weight Checker</h1>
+    <p>Enter your height and weight:</p>
+    <label for="height">Height (m):</label>
+    <input type="text" id="height">
+    <label for="weight">Weight (kg):</label>
+    <input type="text" id="weight">
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <p>Your BMI status is: <span id="status"></span></p>
+
+    <script>
+        function calculateBMI() {
+            let height = parseFloat(document.getElementById("height").value);
+            let weight = parseFloat(document.getElementById("weight").value);
+            let bmi = weight / (height * height);
+            let statusElement = document.getElementById("status");
+
+            if (bmi < 18.5) {
+                statusElement.innerHTML = '<span class="highlight-blue">Wasted</span>';
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                statusElement.innerHTML = '<span class="highlight-green">Normal</span>';
+            } else if (bmi >= 25 && bmi < 29.9) {
+                statusElement.innerHTML = '<span class="highlight-yellow">Overweight</span>';
+            } else if (bmi >= 30 && bmi < 39.9) {
+                statusElement.innerHTML = '<span class="highlight-orange">Obese</span>';
+            } else {
+                statusElement.innerHTML = '<span class="highlight-red">Extremely Obese</span>';
+            }
+        }
+    </script>
+</body>
+</html>
